@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 export default function TopComponent() {
+  const navigation = useNavigate();
   return (
     <div
+      onClick={() => navigation("/")}
       className="sidebar-top"
       style={{
         alignItems: "center",

@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
+import { BrowserRouter } from "react-router-dom";
 import {
   AppTopComponent,
   MainComponent,
@@ -41,28 +42,29 @@ export const AppEntry = () => {
 
   // 상단 component의 좌,우를 최대로 키우고 바로 밑으로 좌측,메인,우측으로 나누는 구조
   return (
-    <div
-      style={{
-        width: "100%",
-      }}
-    >
-      <PC>
-        <TopComponent />
-      </PC>
-      <Mobile>
-        <AppTopComponent />
-      </Mobile>
-
-      <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
+    <BrowserRouter>
+      <div
+        style={{
+          width: "100%",
+        }}
+      >
         <PC>
-          <SidebarLeft />
+          <TopComponent />
         </PC>
-        <MainComponent />
-        <PC>
-          <SidebarRight />
-        </PC>
+        <Mobile>
+          <AppTopComponent />
+        </Mobile>
+        <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
+          <PC>
+            <SidebarLeft />
+          </PC>
+          <MainComponent />
+          <PC>
+            <SidebarRight />
+          </PC>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 

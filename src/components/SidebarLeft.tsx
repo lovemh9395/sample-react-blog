@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SidebarLeft() {
+  const navigation = useNavigate();
   const [activeMenu, setActiveMenu] = useState<number | null>(null); // 드롭다운 상태 관리
   const menus = [
     {
@@ -11,6 +13,10 @@ export default function SidebarLeft() {
           no: 1,
           title: "React SubMenu 1-1",
         },
+        {
+          no: 3,
+          title: "React SubMenu 1-2",
+        },
       ],
     },
     {
@@ -18,8 +24,12 @@ export default function SidebarLeft() {
       title: "React Menu 2",
       subMenus: [
         {
-          no: 1,
+          no: 2,
           title: "React SubMenu 2-1",
+        },
+        {
+          no: 4,
+          title: "React SubMenu 2-2",
         },
       ],
     },
@@ -59,6 +69,7 @@ export default function SidebarLeft() {
               <div
                 key={subMenu.no}
                 onClick={() => {
+                  navigation(`/post/list/${subMenu.no}`);
                   setActiveMenu(null); // 서브 메뉴 클릭 시 드롭다운 닫기
                 }}
                 style={{
